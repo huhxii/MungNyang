@@ -1,5 +1,6 @@
 package com.example.mungnyang
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -27,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         val menuItem = menu?.findItem(R.id.menu_chat)
 
         menuItem?.setOnMenuItemClickListener {
-            Toast.makeText(applicationContext,"Direction Message로 이동합니다.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, FriendslistActivity::class.java)
+            startActivity(intent)
             true
         }
         return super.onCreateOptionsMenu(menu)
