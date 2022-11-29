@@ -221,7 +221,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:padding="10dp"
-                    android:background="F3F3F3">
+                    android:background="#F3F3F3">
                 </FrameLayout>
 
                 <TextView
