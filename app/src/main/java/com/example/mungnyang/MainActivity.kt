@@ -2,6 +2,7 @@ package com.example.mungnyang
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mungnyang.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
