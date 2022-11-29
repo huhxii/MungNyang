@@ -57,7 +57,8 @@
                 android:background="@android:color/transparent"
                 android:layout_gravity="center_vertical"
                 android:hint="mungNyang@gmail.com"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:inputType="textEmailAddress"/>
         </LinearLayout>
 
         <TextView
@@ -95,6 +96,7 @@
                 android:background="@android:color/transparent"
                 android:layout_gravity="center_vertical"
                 android:hint="*******"
+                android:inputType="textPassword"
                 android:textSize="20sp" />
         </LinearLayout>
 
