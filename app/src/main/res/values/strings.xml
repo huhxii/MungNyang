@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MungNyang</string>
     <string name="adopt_first">1. 입양 전 확인</string>
+    <string name="adopt_first_content">서울동물복지지원센트 홈페이지를 확인하세요</string>
 </resources>
