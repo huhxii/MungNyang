@@ -6,6 +6,6 @@
         android:id="@+id/menu_chat"
         android:icon="@drawable/chat"
         android:title="채팅"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 </menu>
