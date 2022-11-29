@@ -16,11 +16,11 @@ class IntroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent= Intent( this, MainActivity::class.java)
+            val intent= Intent( this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }, 9000)
         Glide.with(this).load(R.raw.dog).override(600,600).into(binding.ivIaDog)
-        Glide.with(this).load(R.raw.mung).override(400,400).into(binding.ivIaMung)
+        Glide.with(this).load(R.raw.mungnyang).override(400,400).into(binding.ivIaMung)
     }
 }
