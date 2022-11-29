@@ -1,6 +1,7 @@
 package com.example.mungnyang
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,11 @@ class UserAdapter(val context: Context, val userList:MutableList<User>):Recycler
         binding.tvItemEmail.text = user.email
 
         binding.root.setOnClickListener{
-            //ChatActivity로 인텐트
+            val intent = Intent(context, ChatActivity::class.java)
+            intent.putExtra("name", user.name)
+            intent.putExtra("uId", user.uId)
+
+            context.startActivity(intent)
             //아래 리스트에 History 대화방 남기는 것
         }
     }
