@@ -138,7 +138,8 @@
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:hint="mungNyang@gmail.com"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:inputType="textEmailAddress"/>
         </LinearLayout>
 
 
@@ -177,7 +178,8 @@
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:hint="*********"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:inputType="textPassword"/>
         </LinearLayout>
 
         <Button
