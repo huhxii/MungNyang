@@ -5,13 +5,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.viewpager.widget.PagerAdapter
 import com.example.mungnyang.databinding.ActivityMainBinding
+import com.example.mungnyang.databinding.TabLayoutItemBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var binding : ActivityMainBinding
+
+    lateinit var adoptlistFragment: AdoptlistFragment
+    lateinit var reviewFragment: ReviewFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,6 +27,34 @@ class MainActivity : AppCompatActivity() {
 
         //Toolbar 설정
         setSupportActionBar(binding.toolbar)
+
+        //viewPagerAdapter 설정
+        val pagerAdapter = PagerAdapter(this)
+        val title = mutableListOf<String>("보호 동물", "입양 후기")
+
+        adoptlistFragment = AdoptlistFragment()
+        reviewFragment = ReviewFragment()
+
+        pagerAdapter.addFragment(adoptlistFragment, title[0])
+        pagerAdapter.addFragment(reviewFragment, title[1])
+
+        binding.mainViewPager2.adapter = pagerAdapter
+
+        TabLayoutMediator(binding.mainTabLayout, binding.mainViewPager2){ tab, position ->
+            tab.setCustomView(createTabView(title[position]))
+        }.attach()
+
+    }
+
+    private fun createTabView(title: String): View {
+        val useTabBinding = TabLayoutItemBinding.inflate(layoutInflater)
+        useTabBinding.tvTitle.text = title
+
+//        when(title){
+//            "보호 동물" ->
+//            "입양 후기" ->
+//        }
+        return useTabBinding.root
     }
 
     //Toolbar 메뉴 기능 설정
