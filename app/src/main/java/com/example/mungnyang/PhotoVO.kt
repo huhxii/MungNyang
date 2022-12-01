@@ -1,4 +1,7 @@
 package com.example.mungnyang
 
-class PhotoVO {
-}
+data class PhotoVO(
+    var ani_number: String = "",
+    var photo_url: String ="",
+    var photo_kind: String =""
+)
