@@ -37,7 +37,10 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.edtLAEmail.text.toString()
             val password = binding.edtLAPassword.text.toString()
 
-            login(email, password)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+//            login(email, password)
         }
     }
 
