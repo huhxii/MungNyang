@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdoptguideActivity">
+    tools:context=".MainActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -216,13 +216,14 @@
                     android:textStyle="bold"
                     android:textColor="@color/iphone_orange"/>
 
-                <FrameLayout
-                    android:id="@+id/frameLayout"
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/mapView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:padding="10dp"
-                    android:background="#F3F3F3">
-                </FrameLayout>
+                    android:background="#F3F3F3"
+                    android:name="com.google.android.gms.maps.SupportMapFragment">
+                </androidx.fragment.app.FragmentContainerView>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -231,8 +232,6 @@
                     android:layout_margin="20dp"
                     android:textColor="@color/hjm_black"
                     android:textSize="18sp"/>
-
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
