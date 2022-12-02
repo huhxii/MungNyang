@@ -10,7 +10,7 @@ import retrofit2.http.Path
 class PhotoOpenApi {
     companion object{
         const val DOMAIN = "http://openapi.seoul.go.kr:8088"
-        const val API_KEY = "764a637071636f6438376d6c707a54"
+        const val API_KEY = BuildConfig.PHOTO_KEY
         const val LIMIT = 300
     }
 }

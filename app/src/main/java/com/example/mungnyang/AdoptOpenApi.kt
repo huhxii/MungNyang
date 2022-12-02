@@ -10,7 +10,7 @@ import retrofit2.http.Path
 class AdoptOpenApi {
     companion object{
         const val DOMAIN = "http://openapi.seoul.go.kr:8088"
-        const val API_KEY = "5a45627a41636f6431396442665259"
+        const val API_KEY = BuildConfig.ADOPT_KEY
         const val LIMIT = 32
     }
 }
