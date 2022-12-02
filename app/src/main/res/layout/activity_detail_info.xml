@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +10,7 @@
     tools:context=".ReviewUploadActivity">
 
     <ImageView
-        android:id="@+id/iv_revup_picture"
+        android:id="@+id/iv_deinfo_picture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
@@ -39,45 +40,43 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/revup_name"
+                        android:id="@+id/deinfo_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="이름 : " />
 
                     <TextView
-                        android:id="@+id/tv_revup_name"
+                        android:id="@+id/tv_deinfo_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="이름" />
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/iv_revup_gender"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/gender" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/revup_kind"
+                    android:id="@+id/iv_deinfo_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="종 : " />
+                    app:srcCompat="@drawable/female" />
 
-                <TextView
-                    android:id="@+id/tv_revup_kind"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="종" />
+                    android:layout_weight="1.66"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/deinfo_kind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="종 : " />
+
+                    <TextView
+                        android:id="@+id/tv_deinfo_kind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="종" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -92,14 +91,35 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/revup_number"
+                        android:id="@+id/deinfo_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="동물번호 : " />
+
+                    <TextView
+                        android:id="@+id/tv_deinfo_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="동물번호" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/deinfo_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:text="나이 : " />
 
                     <TextView
-                        android:id="@+id/tv_revup_number"
+                        android:id="@+id/tv_deinfo_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="나이" />
@@ -111,20 +131,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/revup_age"
+                    android:id="@+id/deinfo_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="발견한 날 : " />
+                    android:text="보호소 온 날 : " />
 
                 <TextView
-                    android:id="@+id/tv_revup_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_deinfo_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:hint="DATE" />
 
             </LinearLayout>
@@ -135,13 +154,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/revup_text"
+                    android:id="@+id/deinfo_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="내용" />
 
                 <TextView
-                    android:id="@+id/tv_revup_text"
+                    android:id="@+id/tv_deinfo_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
@@ -152,11 +171,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/btn_revup_reg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="등록" />
 
 </LinearLayout>
