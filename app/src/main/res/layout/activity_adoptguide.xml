@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".AdoptguideActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -23,10 +23,10 @@
                 android:layout_margin="30dp"
                 android:gravity="center"
                 android:text="입양안내"
+                android:fontFamily="@font/tntn"
                 android:textAllCaps="false"
                 android:textColor="@color/iphone_orange"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textSize="30sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -203,35 +203,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:padding="30dp"
+                android:gravity="center">
 
-                <TextView
+                <Button
+                    android:id="@+id/btn_mapo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="서울동물복지지원센터 찾아오시는 길"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:text="마포센터 안내"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/iphone_orange"/>
+                    android:backgroundTint="@color/iphone_blue"/>
 
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/mapView"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:padding="10dp"
-                    android:background="#F3F3F3"
-                    android:name="com.google.android.gms.maps.SupportMapFragment">
-                </androidx.fragment.app.FragmentContainerView>
-
-                <TextView
+                <Button
+                    android:id="@+id/btn_guri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="유선전화 : 02-2124-2839"
-                    android:layout_margin="20dp"
-                    android:textColor="@color/hjm_black"
-                    android:textSize="18sp"/>
+                    android:layout_marginLeft="30dp"
+                    android:text="구리센터 안내"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/iphone_blue"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
