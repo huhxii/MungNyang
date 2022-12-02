@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="iphone_orange">#FFEE7762</color>
     <color name="hjm_white">#FFF3F3F3</color>
+    <color name="hjm_gray">#FF808080</color>
     <color name="hjm_black">#2B2B2B</color>
     <color name="iphone_red">#A5282C</color>
     <color name="iphone_blue">#5EB0E5</color>
