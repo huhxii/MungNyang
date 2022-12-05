@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".ReviewUploadActivity">
+    tools:context=".DetailInfoActivity">
 
     <ImageView
         android:id="@+id/iv_deinfo_picture"
@@ -50,32 +50,36 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="이름" />
+
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/iv_deinfo_gender"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/gender" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/deinfo_kind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/female" />
+                    android:layout_marginBottom="10dp"
+                    android:text="종 : " />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tv_deinfo_kind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.66"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/deinfo_kind"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="종 : " />
-
-                    <TextView
-                        android:id="@+id/tv_deinfo_kind"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="종" />
-                </LinearLayout>
+                    android:hint="종" />
 
             </LinearLayout>
 
@@ -105,26 +109,26 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/deinfo_age"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="10dp"
+                    android:text="나이 : " />
 
-                    <TextView
-                        android:id="@+id/deinfo_age"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="나이 : " />
-
-                    <TextView
-                        android:id="@+id/tv_deinfo_age"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="나이" />
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_deinfo_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="나이" />
 
             </LinearLayout>
 
