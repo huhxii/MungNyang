@@ -25,8 +25,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ReviewFragment : Fragment() {
     lateinit var binding: FragmentReviewBinding
     lateinit var adapter: ReviewAdapter
-    lateinit var infoList: MutableList<Information>
-    lateinit var photoList: MutableList<PhotoInformation>
+    lateinit var adoptList: MutableList<AnimalVO>
+    lateinit var photoList: MutableList<PhotoVO>
     var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,38 +38,43 @@ class ReviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentReviewBinding.inflate(layoutInflater)
-        infoList = mutableListOf()
+        adoptList = mutableListOf()
         photoList = mutableListOf()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(MungNyangOpenApi.DOMAIN)
+        val adoptRetrofit = Retrofit.Builder()
+            .baseUrl(AdoptOpenApi.DOMAIN)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+        val photoRetrofit = Retrofit.Builder()
+            .baseUrl(PhotoOpenApi.DOMAIN)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val adoptService = adoptRetrofit.create(AdoptOpenService::class.java)
+        val photoService = photoRetrofit.create(PhotoOpenService::class.java)
 
-        val infoService = retrofit.create(MungNyangInfo::class.java)
-        val photoService = retrofit.create(MungNyangPhoto::class.java)
-        infoService.getInfo(MungNyangOpenApi.API_KEY, MungNyangOpenApi.LIMIT).enqueue(object : Callback<AdoptAnimal> {
+        adoptService.getAdopt(AdoptOpenApi.API_KEY, AdoptOpenApi.LIMIT).enqueue(object : Callback<AdoptAnimal> {
             override fun onResponse(call: Call<AdoptAnimal>, response: Response<AdoptAnimal>) {
                 val data = response.body()
                 data?.let{
                     it.TbAdpWaitAnimalView.list_total_count
-                    for (loadData in it.TbAdpWaitAnimalView.row) {
-                        val infoDAO = InfoDAO()
-                        var infoNo = loadData.ANIMAL_NO.toString()
-                        var name = loadData.NM
-                        var gender = loadData.SEXDSTN
-                        var age = loadData.AGE
-                        var kind = loadData.BREEDS
-                        var date = loadData.ENTRNC_DATE
-                        var text = loadData.INTRCN_CN
-                        val info = Information(infoNo, name, gender, age, kind, date, text)
-
-                        infoList.add(Information(infoNo, name, gender, age, kind, date, text))
-                        infoDAO.insertInfo(info).addOnSuccessListener {
+                    for (adopt in it.TbAdpWaitAnimalView.row) {
+                        val adoptDAO = AdoptDAO()
+                        var number = adopt.ANIMAL_NO
+                        var state = adopt.ADP_STTUS
+                        var name = adopt.NM
+                        var age = adopt.AGE
+                        var gender = adopt.SEXDSTN
+                        var weight = adopt.BDWGH
+                        var breed = adopt.BREEDS
+                        var date = adopt.ENTRNC_DATE
+                        val adopt = AnimalVO(number, state, name, age, gender, weight, breed, date)
+                        adoptList.add(AnimalVO(number, state, name, age, gender, weight, breed, date))
+                        adoptDAO.insertAnimal(adopt)?.addOnSuccessListener {
+                            Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 성공")
                         }?.addOnFailureListener {
-                            Log.d("com.example.database", "infoData insert failed")
+                            Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 실패")
                         }
-                        adapter = ReviewAdapter(binding.root.context, infoList, photoList)
+                        adapter = ReviewAdapter(binding.root.context, adoptList, photoList)
                         binding.recyclerView.layoutManager = GridLayoutManager(binding.root.context, 2)
                         binding.recyclerView.setHasFixedSize(true)
                         binding.recyclerView.adapter = adapter
@@ -82,32 +87,29 @@ class ReviewFragment : Fragment() {
                 Log.d("com.example.test", "infoList Load Error ${t.printStackTrace()}")
             }
         })
-        photoService.getPhoto(MungNyangOpenApi.API_KEY, MungNyangOpenApi.LIMIT).enqueue(object : Callback<AnimalPhoto> {
+
+        photoService.getAnimal(PhotoOpenApi.API_KEY, PhotoOpenApi.LIMIT).enqueue(object : Callback<AnimalPhoto> {
             override fun onResponse(call: Call<AnimalPhoto>, response: Response<AnimalPhoto>) {
                 val data = response.body()
                 data?.let{
                     it.TbAdpWaitAnimalPhotoView.list_total_count
-                    for (loadData in it.TbAdpWaitAnimalPhotoView.row) {
-                        var infoDAO = InfoDAO()
-                        var docid = infoDAO.photoDatabaseReference?.push()?.key
-                        var photoNo = loadData.ANIMAL_NO.toString()
-                        var photoKind = loadData.PHOTO_KND
-                        var photoNumber = loadData.PHOTO_NO.toString()
-                        var url = loadData.PHOTO_URL
-                        if(photoKind.equals("THUMB")){
-                            val photo = PhotoInformation(docid, photoNo, photoKind, photoNumber, url)
-                            photoList.add(PhotoInformation(docid, photoNo, photoKind, photoNumber, url))
-                            infoDAO.insertPhoto(photo).addOnSuccessListener {
+                    for (animal in it.TbAdpWaitAnimalPhotoView.row) {
+                        val adoptDAO = AdoptDAO()
+                        val ani_number = animal.ANIMAL_NO
+                        val photo_url = animal.PHOTO_URL
+                        val photo_kind = animal.PHOTO_KND
+                        if(photo_kind.equals("THUMB")){
+                            val photo = PhotoVO(ani_number, photo_url, photo_kind)
+                            photoList.add(PhotoVO(ani_number, photo_url, photo_kind))
+                            adoptDAO.insertPhoto(photo).addOnSuccessListener {
                             }?.addOnFailureListener {
                                 Log.d("com.example.database", "photoData insert failed")
                             }
                         }
-                        adapter = ReviewAdapter(binding.root.context, infoList, photoList)
+                        adapter = ReviewAdapter(binding.root.context, adoptList, photoList)
                         binding.recyclerView.layoutManager = GridLayoutManager(binding.root.context, 2)
                         binding.recyclerView.setHasFixedSize(true)
                         binding.recyclerView.adapter = adapter
-
-
                     }
                 }?: let{
                     Log.d("com.example.database", "photoList is Empty")
